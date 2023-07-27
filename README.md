@@ -13,6 +13,7 @@ npm install redux react-redux
 ```
 
 ### index.js의   <React.StrictMode> 를 <Provider> 로 바꾼다.
+> App.js 컴포넌트를 감싸는 이유는 store를 제공해주기 위해서!
 ```javascript
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -25,8 +26,23 @@ root.render(
 ```javascript
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider>
+  <Provider store={store}>
     <App />
   </Provider>
 );
 ```
+그리고 src > redux(폴더생성) > store.js(파일생성) 한다. 
+
+### store.js
+
+```javascript
+import { createStore } from "redux";
+import reducer from "./reducer/reducer";
+
+let store = createStore(reducer);
+export default store;
+
+
+```
+> Redux Toolkit이 오늘 Redux를 사용하는 방법인 이유
+> https://redux.js.org/introduction/why-rtk-is-redux-today
